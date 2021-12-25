@@ -1,12 +1,12 @@
 [package]
 name          = "libxid"
 version       = "0.1.4"
-authors       = ["Jérôme Renard <jeromer@fastmail.net>"]
-edition       = "2018"
+authors       = ["Adel Urazov"]
+edition       = "2021"
 license       = "MIT"
 description   = "Package xid is a globally unique id generator library. It's a Rust port of https://github.com/rs/xid"
-homepage      = "https://github.com/jeromer/libxid"
-repository    = "https://github.com/jeromer/libxid"
+homepage      = "https://github.com/x-research-team/libxid"
+repository    = "https://github.com/x-research-team/libxid"
 documentation = "https://docs.rs/libxid/"
 readme        = "README.md"
 
@@ -18,3 +18,4 @@ crc32fast     = "1.1.2"
 byteorder     = "1.3.1"
 serde         = { version = "1.0", features = ["derive"] }
 serde_json    = "1.0"
+sysctl        = "0.4.3"

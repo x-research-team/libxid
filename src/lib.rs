@@ -102,12 +102,11 @@ use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::error::Error;
 use std::fmt;
 use std::fs;
-use std::fs::File;
 use std::io;
-use std::io::prelude::*;
 use std::process;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
+use sysctl::Sysctl;
 
 const ID_LEN: usize = 12;
 
@@ -460,6 +459,11 @@ fn platform_machine_id() -> Result<String, io::Error> {
     file.read_to_string(&mut contents)?;
 
     Ok(contents)
+}
+
+#[cfg(target_os = "macos")]
+fn platform_machine_id() -> Result<String, io::Error> {
+    Ok(sysctl::Ctl::new("kern.uuid").unwrap().value_string().unwrap())
 }
 
 fn hostname() -> String {
